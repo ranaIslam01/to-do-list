@@ -3,40 +3,92 @@ body {
     background-color: #f4f4f4;
     padding: 20px;
 }
+
 #app {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     max-width: 500px;
     margin: auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
 }
+
 h1 {
     color: #333;
 }
+
 input[type="text"] {
-    width: 70%;
-    padding: 10px;
+    width: 93%;
+    padding: 16px;
     border: 1px solid #ddd;
+    font-size: large;
+    margin-top: px;
+    border-radius: 4px;
 }
+
 button {
-    padding: 10px 15px;
+    margin-top: 20px;
+    padding: 20px 15px;
     background-color: #007BFF;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 4px;
 }
+
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 li {
-    padding: 12px;
     background: #eee;
     margin-top: 8px;
     border-bottom: 1px solid #ddd;
     cursor: pointer; /* মাউস আনলে যেন বোঝা যায় ক্লিক করা যাবে */
 }
+
 .completed {
     text-decoration: line-through; /* কাজ শেষ হলে লেখার উপর দাগ */
     background-color: #d4edda;
+}
+
+@media (max-width: 560px){
+    input[type="text"]{
+        width: 87%;
+    }
+}
+
+/* 🟢 নতুন অংশ শুরু — delete button ও layout styling */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eee;
+    border-radius: 5px;
+    padding: 10px 12px;
+}
+
+.task-item span {
+    flex: 1;
+    word-break: break-word;
+}
+
+/* ❌ Delete button design */
+.delete-btn {
+    background: rgb(186, 120, 120);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background: rgb(159, 90, 90);
 }
