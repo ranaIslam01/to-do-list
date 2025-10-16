@@ -10,11 +10,16 @@ addTaskBtn.onclick = function () {
   }
   // Create Element li 
   const newTask = document.createElement('li');
-
+  //Text add
   newTask.innerText = taskText;
-
+  // Ul er vitore li add 
   taskList.appendChild(newTask);
+  // Input felid empty
   taskInput.value = "";
+  // Li er jonno styling
+  newTask.onclick = function (){
+    newTask.classList.toggle('completed')
+  }
 
 
 }
