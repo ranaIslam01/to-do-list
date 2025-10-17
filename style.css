@@ -43,12 +43,6 @@ ul {
     padding: 0;
 }
 
-li {
-    background: #eee;
-    margin-top: 8px;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer; /* মাউস আনলে যেন বোঝা যায় ক্লিক করা যাবে */
-}
 
 .completed {
     text-decoration: line-through; /* কাজ শেষ হলে লেখার উপর দাগ */
@@ -60,35 +54,33 @@ li {
         width: 87%;
     }
 }
+        /* আগের CSS কোডের নিচে এটি যোগ করুন */
+        li {
+            display: flex; /* আইটেমগুলোকে পাশাপাশি সাজানোর জন্য */
+            justify-content: space-between; /* লেখা এবং বাটনের মধ্যে ফাঁকা জায়গা তৈরি */
+            align-items: center; /* সবকিছুকে মাঝখানে আনা */
+            padding: 12px;
+            background: #eee;
+            margin-top: 8px;
+            border-bottom: 1px solid #ddd;
+            border-radius: 4px;
+        }
 
-/* 🟢 নতুন অংশ শুরু — delete button ও layout styling */
-.task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #eee;
-    border-radius: 5px;
-    padding: 10px 12px;
-}
+        .task-text {
+            cursor: pointer;
+        }
+        
+        .completed .task-text {
+            text-decoration: line-through;
+            color: #888;
+        }
 
-.task-item span {
-    flex: 1;
-    word-break: break-word;
-}
-
-/* ❌ Delete button design */
-.delete-btn {
-    background: rgb(186, 120, 120);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 10px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-.delete-btn:hover {
-    background: rgb(159, 90, 90);
-}
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }

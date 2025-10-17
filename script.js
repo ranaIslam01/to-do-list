@@ -1,64 +1,63 @@
+// প্রয়োজনীয় HTML এলিমেন্টগুলো সিলেক্ট করা
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
-function addTask(event) {
-  event?.preventDefault(); // reload বন্ধ
+// একটি ফাংশন তৈরি করি যা নতুন কাজ যোগ করবে
+function addTask() {
+    const taskText = taskInput.value.trim();
 
-  const taskText = taskInput.value.trim();
+    if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+    }
 
-  if (taskText === "") {
-    alert("Please enter a task!");
-    return;
-  }
+    // ধাপ ২.১: নতুন <li> এলিমেন্ট তৈরি করা
+    const newTask = document.createElement('li');
 
-  // 🟢 li তৈরি
-  const newTask = document.createElement('li');
-  newTask.classList.add("task-item");
+    // ধাপ ২.২: কাজের টেক্সটের জন্য একটি <span> তৈরি করা
+    const taskSpan = document.createElement('span');
+    taskSpan.className = 'task-text'; // ক্লাস যোগ করা
+    taskSpan.innerText = taskText;
 
-  // টাস্ক টেক্সট
-  const span = document.createElement('span');
-  span.textContent = taskText;
-  span.classList.add("task-text");
-
-  // ডিলিট বাটন
+    // ধাপ ২.৩: একটি "Delete" বাটন তৈরি করা
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    deleteBtn.classList.add('delete-btn');
+    deleteBtn.className = 'delete-btn'; // ক্লাস যোগ করা
+    deleteBtn.innerText = 'Delete';
 
+    // ধাপ ২.৪: নতুন <li> এর ভেতরে span এবং বাটন যোগ করা
+    // এখন <li> এর গঠন হবে: <li><span>Task Text</span><button>Delete</button></li>
+    newTask.appendChild(taskSpan);
+    newTask.appendChild(deleteBtn);
 
-  // Complete toggle
-  span.onclick = function () {
-    span.classList.toggle('completed');
-  };
-
-  // Delete
-  deleteBtn.onclick = function () {
-    newTask.remove();
-  };
-
-  // 🟢 এবার নিচে না গিয়ে উপরে add করবো
-  // সাধারণত appendChild নিচে add করে, তাই insertBefore ব্যবহার করছি
-  if (taskList.firstChild) {
-    taskList.insertBefore(newTask, taskList.firstChild);
-  } else {
+    // ধাপ ২.৫: সম্পূর্ণ <li> এলিমেন্টটিকে <ul> তালিকায় যোগ করা
     taskList.appendChild(newTask);
-  }
 
-  // li তে content add করা হচ্ছে
-  newTask.appendChild(span);
-  newTask.appendChild(deleteBtn);
+    // ইনপুট বক্স খালি করা
+    taskInput.value = "";
 
-  // ইনপুট ক্লিয়ার
-  taskInput.value = "";
+    // --- ইভেন্ট হ্যান্ডলিং ---
+
+    // ধাপ ২.৬: টেক্সটে ক্লিক করলে কাজটি সম্পন্ন হিসেবে চিহ্নিত করা
+    newTask.onclick = function() {
+        // li এলিমেন্টে 'completed' ক্লাস যোগ/বাতিল করা
+        newTask.classList.toggle('completed');
+    };
+
+    // ধাপ ২.৭: "Delete" বাটনে ক্লিক করলে কাজটি মুছে ফেলা
+    deleteBtn.onclick = function() {
+        // remove() ব্যবহার করে li এলিমেন্টটি DOM থেকে মুছে ফেলা
+        taskList.removeChild(newTask);
+        // অথবা আরও সহজে: newTask.remove();
+    };
 }
 
-// 🟢 Add button click
-addTaskBtn.addEventListener("click", addTask);
+// "Add Task" বাটনে ক্লিক করলে addTask ফাংশনটি কল হবে
+addTaskBtn.onclick = addTask;
 
-// 🟢 Enter চাপলেও একই কাজ করবে
-taskInput.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    addTask(event);
-  }
+// Enter চাপলেও যেন কাজ যোগ হয় (বোনাস)
+taskInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        addTask();
+    }
 });
