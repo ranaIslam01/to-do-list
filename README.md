@@ -7,6 +7,9 @@
  এটি বিশুদ্ধ HTML, CSS, এবং JavaScript দিয়ে তৈরি করা হয়েছে এবং ডেটা সংরক্ষণের জন্য ব্রাউজার লোকাল স্টোরেজ ব্যবহার করে।
 </p>
 
+<img width="789" height="374" alt="Screenshot 2025-10-23 200641" src="https://github.com/user-attachments/assets/1100d623-9539-4f84-949c-4b6c15f03f92" />
+
+
 <!-- Badges -->
 <p>
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
@@ -21,7 +24,7 @@
 
 ## 🚀 ডেমো (Live Demo )
 
-*(এখানে আপনার প্রোজেক্টের লাইভ ডেমো লিংক দিতে পারেন, যদি থাকে)*
+https://to-do-list-eight-omega-84.vercel.app/
 
 <p align="center">
   <img src="demo.gif" alt="App Demo" width="80%">
